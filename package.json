@@ -23,6 +23,10 @@
     "babel-preset-stage-0": "^6.5.0"
   },
   "dependencies": {
-    "axios": "^0.14.0"
+    "axios": "^0.14.0",
+    "chokidar": "^1.6.0",
+    "download": "^5.0.2",
+    "github": "^3.0.0",
+    "tar-fs": "^1.13.2"
   }
 }

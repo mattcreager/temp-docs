@@ -46,24 +46,29 @@ class Catalog {
   print(dest) {
     let output = _.map(this.headers, (docs) => {
       return render('hello', { docs }).then((out) => {
-        return writeFile(dest + `/${docs[0].folder}/index.js`, out);
+        return writeFile(`${dest}/${docs[0].folder}/index.js`, out);
       });
     });
 
     return Promise.all(output).then(() => {
-      console.log('here are some versions', this.versions)
-
-      let versionDoc = _.map(this.versions, (k, importName) => {
+      let versionDoc = _.map(this.versions, (slug, importName) => {
         return {
           importName,
           relativePath: `./${importName}`,
-          content: importName
+          path: `/${importName}`,
+          content: importName,
+          meta: {
+            slug,
+            title: slug
+          }
         };
       });
 
+      console.log({ docs: versionDoc })
+
       return render('hello', { docs: versionDoc }).then((out) => {
-        console.log('yo')
-        return writeFile(dest, out);
+        console.log(`${dest}/index.js`, out)
+        return writeFile(`${dest}/index.js`, out);
       });
     });
   }

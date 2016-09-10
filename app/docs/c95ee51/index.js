@@ -1,16 +1,16 @@
 
-import andAnother13 from './docs/commands/and-another.md';
-import another16 from './docs/commands/another.md';
-import index19 from './docs/commands/index.md';
-import index22 from './docs/index.md';
-import index25 from './docs/internals/index.md';
-import index28 from './docs/quickstart/index.md';
-import index31 from './docs/tutorials/index.md';
+import andAnother14 from './docs/commands/and-another.md';
+import another17 from './docs/commands/another.md';
+import index20 from './docs/commands/index.md';
+import index24 from './docs/index.md';
+import index27 from './docs/internals/index.md';
+import index30 from './docs/quickstart/index.md';
+import index32 from './docs/tutorials/index.md';
 
 export default [
   {
     path: '/docs/commands/and-another',
-    content: andAnother13,
+    content: andAnother14,
     meta: {
       slug: 'and-another',
       title: 'And Another',
@@ -18,7 +18,7 @@ export default [
   },
   {
     path: '/docs/commands/another',
-    content: another16,
+    content: another17,
     meta: {
       slug: 'another',
       title: 'Another',
@@ -26,7 +26,7 @@ export default [
   },
   {
     path: '/docs/commands',
-    content: index19,
+    content: index20,
     meta: {
       slug: 'index',
       title: 'Index',
@@ -34,7 +34,7 @@ export default [
   },
   {
     path: '/docs',
-    content: index22,
+    content: index24,
     meta: {
       slug: 'index',
       title: 'Index',
@@ -42,7 +42,7 @@ export default [
   },
   {
     path: '/docs/internals',
-    content: index25,
+    content: index27,
     meta: {
       slug: 'index',
       title: 'Index',
@@ -50,7 +50,7 @@ export default [
   },
   {
     path: '/docs/quickstart',
-    content: index28,
+    content: index30,
     meta: {
       slug: 'index',
       title: 'Index',
@@ -58,7 +58,7 @@ export default [
   },
   {
     path: '/docs/tutorials',
-    content: index31,
+    content: index32,
     meta: {
       slug: 'index',
       title: 'Index',

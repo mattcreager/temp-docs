@@ -1,6 +1,6 @@
 
-import andAnother40 from './docs/commands/and-another.md';
-import another43 from './docs/commands/another.md';
+import andAnother43 from './docs/commands/and-another.md';
+import another44 from './docs/commands/another.md';
 import index45 from './docs/commands/index.md';
 import lastOne46 from './docs/commands/last-one.md';
 import index47 from './docs/index.md';
@@ -15,7 +15,7 @@ import tutorialsIn_1_254 from './docs/tutorials/tutorials-in-1-2.md';
 export default [
   {
     path: '/docs/commands/and-another',
-    content: andAnother40,
+    content: andAnother43,
     meta: {
       slug: 'and-another',
       title: 'And Another',
@@ -23,7 +23,7 @@ export default [
   },
   {
     path: '/docs/commands/another',
-    content: another43,
+    content: another44,
     meta: {
       slug: 'another',
       title: 'Another',

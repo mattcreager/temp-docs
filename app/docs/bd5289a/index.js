@@ -2,14 +2,14 @@
 import andAnother15 from './docs/commands/and-another.md';
 import another18 from './docs/commands/another.md';
 import index21 from './docs/commands/index.md';
-import lastOne24 from './docs/commands/last-one.md';
-import index27 from './docs/index.md';
-import anotherMinor30 from './docs/internals/another-minor.md';
+import lastOne23 from './docs/commands/last-one.md';
+import index26 from './docs/index.md';
+import anotherMinor29 from './docs/internals/another-minor.md';
 import index33 from './docs/internals/index.md';
-import index34 from './docs/quickstart/index.md';
-import moarQuickstart36 from './docs/quickstart/moar-quickstart.md';
+import index35 from './docs/quickstart/index.md';
+import moarQuickstart37 from './docs/quickstart/moar-quickstart.md';
 import index39 from './docs/tutorials/index.md';
-import tutorialsIn_1_242 from './docs/tutorials/tutorials-in-1-2.md';
+import tutorialsIn_1_241 from './docs/tutorials/tutorials-in-1-2.md';
 
 export default [
   {
@@ -38,7 +38,7 @@ export default [
   },
   {
     path: '/docs/commands/last-one',
-    content: lastOne24,
+    content: lastOne23,
     meta: {
       slug: 'last-one',
       title: 'Last One',
@@ -46,7 +46,7 @@ export default [
   },
   {
     path: '/docs',
-    content: index27,
+    content: index26,
     meta: {
       slug: 'index',
       title: 'Index',
@@ -54,7 +54,7 @@ export default [
   },
   {
     path: '/docs/internals/another-minor',
-    content: anotherMinor30,
+    content: anotherMinor29,
     meta: {
       slug: 'another-minor',
       title: 'Another Minor',
@@ -70,7 +70,7 @@ export default [
   },
   {
     path: '/docs/quickstart',
-    content: index34,
+    content: index35,
     meta: {
       slug: 'index',
       title: 'Index',
@@ -78,7 +78,7 @@ export default [
   },
   {
     path: '/docs/quickstart/moar-quickstart',
-    content: moarQuickstart36,
+    content: moarQuickstart37,
     meta: {
       slug: 'moar-quickstart',
       title: 'Moar Quickstart',
@@ -94,7 +94,7 @@ export default [
   },
   {
     path: '/docs/tutorials/tutorials-in-1-2',
-    content: tutorialsIn_1_242,
+    content: tutorialsIn_1_241,
     meta: {
       slug: 'tutorials-in-1-2',
       title: 'Tutorials In 1 2',

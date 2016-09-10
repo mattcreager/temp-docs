@@ -1,0 +1,19 @@
+
+{~n}
+{#docs}
+  import {importName} from '{relativePath}';{~n}
+{/docs}
+{~n}
+export default [{~n}
+{#docs}
+{~s}{~s}{{~n}
+{~s}{~s}{~s}{~s}path: '{path}',{~n}
+{?default}{~s}{~s}{~s}{~s}default: {default},{~n}{/default}
+{~s}{~s}{~s}{~s}content: {importName},{~n}
+{~s}{~s}{~s}{~s}meta: {{~n}
+{~s}{~s}{~s}{~s}{~s}{~s}slug: '{meta.slug}',{~n}
+{~s}{~s}{~s}{~s}{~s}{~s}title: '{meta.title}',{~n}
+{~s}{~s}{~s}{~s}},{~n}
+{~s}{~s}},{~n}
+{/docs}
+];

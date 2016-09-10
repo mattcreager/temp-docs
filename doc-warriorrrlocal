@@ -1,0 +1,112 @@
+
+import index1 from './local/index.md';
+import andAnother2 from './local/commands/and-another.md';
+import another3 from './local/commands/another.md';
+import index4 from './local/commands/index.md';
+import lastOne5 from './local/commands/last-one.md';
+import anotherMajor6 from './local/internals/another-major.md';
+import anotherMinor7 from './local/internals/another-minor.md';
+import index8 from './local/internals/index.md';
+import index9 from './local/quickstart/index.md';
+import moarQuickstart10 from './local/quickstart/moar-quickstart.md';
+import index11 from './local/tutorials/index.md';
+import tutorialsIn_1_212 from './local/tutorials/tutorials-in-1-2.md';
+
+export default [
+  {
+    path: '/local',
+    content: index1,
+    meta: {
+      slug: 'index',
+      title: 'Index',
+     },
+  },
+  {
+    path: '/local/commands/and-another',
+    content: andAnother2,
+    meta: {
+      slug: 'and-another',
+      title: 'And Another',
+     },
+  },
+  {
+    path: '/local/commands/another',
+    content: another3,
+    meta: {
+      slug: 'another',
+      title: 'Another',
+     },
+  },
+  {
+    path: '/local/commands',
+    content: index4,
+    meta: {
+      slug: 'index',
+      title: 'Index',
+     },
+  },
+  {
+    path: '/local/commands/last-one',
+    content: lastOne5,
+    meta: {
+      slug: 'last-one',
+      title: 'Last One',
+     },
+  },
+  {
+    path: '/local/internals/another-major',
+    content: anotherMajor6,
+    meta: {
+      slug: 'another-major',
+      title: 'Another Major',
+     },
+  },
+  {
+    path: '/local/internals/another-minor',
+    content: anotherMinor7,
+    meta: {
+      slug: 'another-minor',
+      title: 'Another Minor',
+     },
+  },
+  {
+    path: '/local/internals',
+    content: index8,
+    meta: {
+      slug: 'index',
+      title: 'Index',
+     },
+  },
+  {
+    path: '/local/quickstart',
+    content: index9,
+    meta: {
+      slug: 'index',
+      title: 'Index',
+     },
+  },
+  {
+    path: '/local/quickstart/moar-quickstart',
+    content: moarQuickstart10,
+    meta: {
+      slug: 'moar-quickstart',
+      title: 'Moar Quickstart',
+     },
+  },
+  {
+    path: '/local/tutorials',
+    content: index11,
+    meta: {
+      slug: 'index',
+      title: 'Index',
+     },
+  },
+  {
+    path: '/local/tutorials/tutorials-in-1-2',
+    content: tutorialsIn_1_212,
+    meta: {
+      slug: 'tutorials-in-1-2',
+      title: 'Tutorials In 1 2',
+     },
+  },
+];

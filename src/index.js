@@ -1,137 +1,57 @@
 
-// Should we prompt them to pick a repo?
-// do we need a really tiny cli library?
+import Promise from 'bluebird';
+import argv from 'yargs';
+import _ from 'lodash';
+import rimraf from 'rimraf';
+import options from './options';
+import output from './output';
+import getReleases from './github';
+import getLocal from './local';
+import Catalog from './catalog';
+import spinners from './spinners';
 
-// doc-catcher mattcreager/project -d go/here
+const rm = Promise.promisify(rimraf);
+const { repo, local, inDir, outDir, watch } = argv
+  .usage('Usage: $0 [options]')
+  .example('$0 arigatomachine/cli -o docs', 'Download and index markdown')
+  .options(options)
+  .argv;
 
-import GitHubAPI from 'github';
-import GitHubCache from 'github-cache';
-import fs from 'fs';
-import download from 'download';
-import tar from 'tar-fs';
-import gunzip from 'gunzip-maybe';
-import path from 'path';
-import chokidar from 'chokidar';
+let catalog = new Catalog();
 
-const GITHUB_VERSION = '3.0.0';
+spinners().create('fetch', `Grabbing releases for ${repo} from GitHub`);
 
-const USER = 'mattcreager';
-const REPO = 'temp-docs';
+Promise.all([
+  rm(outDir),
+  getReleases(repo),
+]).spread((rm, releases) => {
+  if (local) {
+    releases.push(getLocal(local));
+  }
 
-let githubAPI = new GitHubAPI({
-  version: GITHUB_VERSION,
-  validateCache: true,
+  spinners().create('download', `Downloading ${releases.length} releases`);
+  spinners().create('print', `Indexing and extracting documentation to ${outDir}`);
+  const extracted = _.map(releases, (release) => {
+    return release.tar.then((tar) => {
+      spinners().success('download');
+
+      return new Promise((resolve, reject) => {
+        tar
+          .pipe(output(outDir, catalog, release.name))
+          .on('finish', resolve)
+          .on('error', reject);
+      });
+    });
+  });
+
+  return Promise.all(extracted).then(() =>  catalog);
+}).then(() => {
+  spinners().success('print');
+  catalog.print(outDir);
 });
-
-let github = new GitHubCache(githubAPI);
-
-let extract = tar.extract('docs-output', {
-  dmode: '0555', // all dirs and files should be readable
-  ignore: function(name, header) {
-    return path.extname(name) !== '.md' // ignore anything except markdown
-  },
-  map: function(header) {
-    console.log(header);
-    header.name = header.name.replace('/docs/', '/');
-    return header
-  },
-});
-
-let extractLocal = tar.extract('docs-output', {
-  dmode: '0555', // all dirs and files should be readable
-  ignore: function(name, header) {
-    return path.extname(name) !== '.md' // ignore anything except markdown
-  },
-  map: function(header) {
-    header.name = `local/${header.name}`;
-    return header
-  },
-});
-
-github.repos.getTags({
-  user: USER,
-  repo: REPO,
-  // ref: 'heads/master'
-}, function(err, res) {
-  // download('https://api.github.com/repos/mattcreager/temp-docs/tarball/master').pipe(gunzip()).pipe(extract).on('finish', function() {
-  //   console.log('ya done')
-  // });
-  console.log(err, res) // JSON.stringify(res));
-})
-
-// Initialize watcher.
-// let watcher = chokidar.watch('../cli/docs', {
-//   ignored: /[\/\\]\./,
-//   persistent: true
+// .then((map) => {
+//   //  console.log('a map is here', map);
+//   //  maybeWatch(opts);
+//
+//   //return catalog(map, outDir);
 // });
-
-
-
-// Something to use when events are received.
-// let log = console.log.bind(console);
-// Add event listeners.
-// watcher
-//   .on('add', path => log(`File ${path} has been added`))
-//   .on('change', path => {
-//     log(`File ${path} has been changed, lets extract`)
-//     tar.pack('../cli/docs').pipe(extractLocal);
-//   })
-//   .on('unlink', path => log(`File ${path} has been removed`));
-
-// let extract2 = tar.extract('docs-output', {
-//   dmode: '0555', // all dirs and files should be readable
-//   ignore: function(name, header) {
-//     return path.extname(name) !== '.md' // ignore anything except markdown
-//   },
-//   map: function(header) {
-//     console.log(header);
-//     header.name = header.name.replace('/docs/', '/');
-//     return header
-//   },
-// });
-
-
-// get tags
-// github.gitdata.getTags({
-//   user: USER,
-//   repo: REPO,
-// }, function(err, res) {
-//   // console.log(JSON.stringify(res));
-//
-//   github.repos.getReleaseByTag({
-//     user: USER,
-//     repo: REPO,
-//     tag: 'v0.2.0'
-//   }, function(err, res2) {
-//     if (err) console.log(err);
-//
-//     // console.log(res2.tarball_url);
-//
-    // download('https://api.github.com/repos/mattcreager/temp-docs/tarball/master').pipe(gunzip()).pipe(extract).on('finish', function() {
-    //   console.log('ya done')
-    // });
-//
-//       github.gitdata.getTags({
-//         user: USER,
-//         repo: REPO,
-//       }, function(err, res) {
-//         // console.log(JSON.stringify(res));
-//
-//         github.repos.getReleaseByTag({
-//           user: USER,
-//           repo: REPO,
-//           tag: 'v0.1.0'
-//         }, function(err, res2) {
-//           if (err) console.log(err);
-//
-//           // console.log(res2.tarball_url);
-//
-//           download(res2.tarball_url).pipe(gunzip()).pipe(extract2).on('finish', function() {
-//             console.log('ya done')
-//           });
-//         })
-//       });
-//     });
-//   })
-// });
-// also need to fetch the latest sha?

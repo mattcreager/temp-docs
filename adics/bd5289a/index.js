@@ -1,21 +1,20 @@
 
-import andAnother13 from './docs/commands/and-another.md';
-import another16 from './docs/commands/another.md';
-import index19 from './docs/commands/index.md';
-import lastOne22 from './docs/commands/last-one.md';
+import andAnother14 from './docs/commands/and-another.md';
+import another17 from './docs/commands/another.md';
+import index20 from './docs/commands/index.md';
+import lastOne23 from './docs/commands/last-one.md';
 import index25 from './docs/index.md';
-import anotherMajor28 from './docs/internals/another-major.md';
-import anotherMinor31 from './docs/internals/another-minor.md';
-import index34 from './docs/internals/index.md';
-import index36 from './docs/quickstart/index.md';
-import moarQuickstart38 from './docs/quickstart/moar-quickstart.md';
-import index40 from './docs/tutorials/index.md';
-import tutorialsIn_1_242 from './docs/tutorials/tutorials-in-1-2.md';
+import anotherMinor28 from './docs/internals/another-minor.md';
+import index31 from './docs/internals/index.md';
+import index34 from './docs/quickstart/index.md';
+import moarQuickstart36 from './docs/quickstart/moar-quickstart.md';
+import index38 from './docs/tutorials/index.md';
+import tutorialsIn_1_240 from './docs/tutorials/tutorials-in-1-2.md';
 
 export default [
   {
     path: '/docs/commands/and-another',
-    content: andAnother13,
+    content: andAnother14,
     meta: {
       slug: 'and-another',
       title: 'And Another',
@@ -23,7 +22,7 @@ export default [
   },
   {
     path: '/docs/commands/another',
-    content: another16,
+    content: another17,
     meta: {
       slug: 'another',
       title: 'Another',
@@ -31,7 +30,7 @@ export default [
   },
   {
     path: '/docs/commands',
-    content: index19,
+    content: index20,
     meta: {
       slug: 'index',
       title: 'Index',
@@ -39,7 +38,7 @@ export default [
   },
   {
     path: '/docs/commands/last-one',
-    content: lastOne22,
+    content: lastOne23,
     meta: {
       slug: 'last-one',
       title: 'Last One',
@@ -54,16 +53,8 @@ export default [
     },
   },
   {
-    path: '/docs/internals/another-major',
-    content: anotherMajor28,
-    meta: {
-      slug: 'another-major',
-      title: 'Another Major',
-    },
-  },
-  {
     path: '/docs/internals/another-minor',
-    content: anotherMinor31,
+    content: anotherMinor28,
     meta: {
       slug: 'another-minor',
       title: 'Another Minor',
@@ -71,7 +62,7 @@ export default [
   },
   {
     path: '/docs/internals',
-    content: index34,
+    content: index31,
     meta: {
       slug: 'index',
       title: 'Index',
@@ -79,7 +70,7 @@ export default [
   },
   {
     path: '/docs/quickstart',
-    content: index36,
+    content: index34,
     meta: {
       slug: 'index',
       title: 'Index',
@@ -87,7 +78,7 @@ export default [
   },
   {
     path: '/docs/quickstart/moar-quickstart',
-    content: moarQuickstart38,
+    content: moarQuickstart36,
     meta: {
       slug: 'moar-quickstart',
       title: 'Moar Quickstart',
@@ -95,7 +86,7 @@ export default [
   },
   {
     path: '/docs/tutorials',
-    content: index40,
+    content: index38,
     meta: {
       slug: 'index',
       title: 'Index',
@@ -103,7 +94,7 @@ export default [
   },
   {
     path: '/docs/tutorials/tutorials-in-1-2',
-    content: tutorialsIn_1_242,
+    content: tutorialsIn_1_240,
     meta: {
       slug: 'tutorials-in-1-2',
       title: 'Tutorials In 1 2',

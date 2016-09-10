@@ -64,10 +64,7 @@ class Catalog {
         };
       });
 
-      console.log({ docs: versionDoc })
-
       return render('hello', { docs: versionDoc }).then((out) => {
-        console.log(`${dest}/index.js`, out)
         return writeFile(`${dest}/index.js`, out);
       });
     });

@@ -30,11 +30,10 @@ Promise.all([
   }
 
   spinners().create('download', `Downloading ${releases.length} releases`);
-  spinners().create('print', `Indexing and extracting documentation to ${outDir}`);
+  spinners().create('extract', `Extracting documentation to ${outDir}`);
   const extracted = _.map(releases, (release) => {
     return release.tar.then((tar) => {
       spinners().success('download');
-
       return new Promise((resolve, reject) => {
         tar
           .pipe(output(outDir, catalog, release.name))
@@ -46,12 +45,13 @@ Promise.all([
 
   return Promise.all(extracted).then(() =>  catalog);
 }).then(() => {
+  spinners().success('extract');
+  spinners().create('print', `Indexing docs in ${outDir}`);
+  return catalog.print(outDir);
+}).then((map) => {
   spinners().success('print');
-  catalog.print(outDir);
+    //  console.log('a map is here', map);
+  //  maybeWatch(opts);
+
+  //return catalog(map, outDir);
 });
-// .then((map) => {
-//   //  console.log('a map is here', map);
-//   //  maybeWatch(opts);
-//
-//   //return catalog(map, outDir);
-// });

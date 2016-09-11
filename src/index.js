@@ -3,6 +3,7 @@ import Promise from 'bluebird';
 import argv from 'yargs';
 import _ from 'lodash';
 import rimraf from 'rimraf';
+import chokidar from 'chokidar';
 import options from './options';
 import output from './output';
 import getReleases from './github';
@@ -34,6 +35,7 @@ Promise.all([
   const extracted = _.map(releases, (release) => {
     return release.tar.then((tar) => {
       spinners().success('download');
+
       return new Promise((resolve, reject) => {
         tar
           .pipe(output(outDir, catalog, release.name))
@@ -50,8 +52,35 @@ Promise.all([
   return catalog.print(outDir);
 }).then((map) => {
   spinners().success('print');
-    //  console.log('a map is here', map);
-  //  maybeWatch(opts);
 
-  //return catalog(map, outDir);
+  let watcher = chokidar.watch(local, {
+    ignored: /[\/\\]\./,
+    persistent: true
+  });
+
+  watcher
+    .on('change', updateLocal)
+    .on('unlink', path => log(`File ${path} has been removed`));
+
+    function updateLocal(path) {
+      rm(`${outDir}/local`)
+        .then(() => {
+          spinners().create('watch', `File ${path} has been changed, re-building local`);
+          return getLocal(local).tar;
+        })
+        .then((tar) => {
+          return new Promise((resolve, reject) => {
+            tar
+              .pipe(output(`${outDir}/local`, catalog, 'local '))
+              .on('finish', resolve)
+              .on('error', reject);
+          }).then(() => {
+            console.log(catalog)
+            return catalog.print(outDir);
+          })
+        })
+        .then(() => {
+          spinners().success('watch');
+        })
+    }
 });

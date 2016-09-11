@@ -23,13 +23,14 @@ import docs from './docs '
 
 ```
 ├── src
-│   ├── index.js            # Glue
-│   ├── bin.js              # Execute
-│   ├── local.js            # Monitor
-│   ├── download.js         # Download
 │   ├── catalog.js          # Index
-│   ├── collate.js          # Collate
-│   └── output.js           # Output
+│   ├── download.js         # Download
+│   ├── github.js           # GitHub
+│   ├── index.js            # Glue
+│   ├── local.js            # Local
+│   ├── options.js          # Options
+│   ├── output.js           # Output
+│   └── spinners.js         # Spinners
 ├── dist                    # Compiled files
 ├── docs                     
 └── bin

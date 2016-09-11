@@ -1,21 +1,21 @@
 
-import andAnother13 from './docs/commands/and-another.md';
-import another16 from './docs/commands/another.md';
-import index19 from './docs/commands/index.md';
-import lastOne22 from './docs/commands/last-one.md';
+import andAnother14 from './docs/commands/and-another.md';
+import another17 from './docs/commands/another.md';
+import index20 from './docs/commands/index.md';
+import lastOne23 from './docs/commands/last-one.md';
 import index26 from './docs/index.md';
 import anotherMajor29 from './docs/internals/another-major.md';
 import anotherMinor32 from './docs/internals/another-minor.md';
-import index35 from './docs/internals/index.md';
-import index37 from './docs/quickstart/index.md';
-import moarQuickstart39 from './docs/quickstart/moar-quickstart.md';
-import index41 from './docs/tutorials/index.md';
+import index34 from './docs/internals/index.md';
+import index36 from './docs/quickstart/index.md';
+import moarQuickstart38 from './docs/quickstart/moar-quickstart.md';
+import index40 from './docs/tutorials/index.md';
 import tutorialsIn_1_242 from './docs/tutorials/tutorials-in-1-2.md';
 
 export default [
   {
     path: '/docs/commands/and-another',
-    content: andAnother13,
+    content: andAnother14,
     meta: {
       slug: 'and-another',
       title: 'And Another',
@@ -23,7 +23,7 @@ export default [
   },
   {
     path: '/docs/commands/another',
-    content: another16,
+    content: another17,
     meta: {
       slug: 'another',
       title: 'Another',
@@ -31,7 +31,7 @@ export default [
   },
   {
     path: '/docs/commands',
-    content: index19,
+    content: index20,
     meta: {
       slug: 'index',
       title: 'Index',
@@ -39,7 +39,7 @@ export default [
   },
   {
     path: '/docs/commands/last-one',
-    content: lastOne22,
+    content: lastOne23,
     meta: {
       slug: 'last-one',
       title: 'Last One',
@@ -71,7 +71,7 @@ export default [
   },
   {
     path: '/docs/internals',
-    content: index35,
+    content: index34,
     meta: {
       slug: 'index',
       title: 'Index',
@@ -79,7 +79,7 @@ export default [
   },
   {
     path: '/docs/quickstart',
-    content: index37,
+    content: index36,
     meta: {
       slug: 'index',
       title: 'Index',
@@ -87,7 +87,7 @@ export default [
   },
   {
     path: '/docs/quickstart/moar-quickstart',
-    content: moarQuickstart39,
+    content: moarQuickstart38,
     meta: {
       slug: 'moar-quickstart',
       title: 'Moar Quickstart',
@@ -95,7 +95,7 @@ export default [
   },
   {
     path: '/docs/tutorials',
-    content: index41,
+    content: index40,
     meta: {
       slug: 'index',
       title: 'Index',

@@ -1,6 +1,6 @@
-Docker installation guide
+Dickkerr
 ====================
-PaddlePaddle provides some pre-compiled binary, including Docker images, ubuntu deb packages. It is welcomed to contributed more installation package of different linux distribution (such as ubuntu, centos, debian, gentoo and so on). We recommend to use Docker images to deploy PaddlePaddle.
+
 ## Docker installation
 
 Docker is a tool designed to make it easier to create, deploy, and run applications by using containers.

@@ -4,11 +4,15 @@ will retrieve and index docs from a GitHub repository.
 
 ## Development
 
-Ditto is compiled with babel
+Faxx is compiled with Babel, `src` => `dist`.
+
+- `$ npm run build`
+
+_Will watch and rebuild_
 
 ## Usage
 
-### Make `doc-catcher` part of your build process.
+### Make `faxx` part of your build process.
 
 
 

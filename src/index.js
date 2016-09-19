@@ -10,6 +10,7 @@ import getReleases from './github';
 import getLocal from './local';
 import Catalog from './catalog';
 import spinners from './spinners';
+import exit from 'exit';
 
 const rm = Promise.promisify(rimraf);
 const { repo, local, inDir, outDir, watch } = argv
@@ -20,12 +21,16 @@ const { repo, local, inDir, outDir, watch } = argv
 
 let catalog = new Catalog();
 
-spinners().create('fetch', `Grabbing releases for ${repo} from GitHub`);
+let init = [ rm(outDir) ];
 
-Promise.all([
-  rm(outDir),
-  getReleases(repo),
-]).spread((rm, releases) => {
+if (repo) {
+  spinners().create('fetch', `Grabbing releases for ${repo} from GitHub`);
+  init.push(getReleases(repo));
+}
+
+Promise.all(init).spread((rm, releases) => {
+  releases = releases || [];
+
   if (local) {
     releases.push(getLocal(local));
   }
@@ -33,16 +38,17 @@ Promise.all([
   spinners().create('download', `Downloading ${releases.length} releases`);
   spinners().create('extract', `Extracting documentation to ${outDir}`);
   const extracted = _.map(releases, (release) => {
-    return release.tar.then((tar) => {
-      spinners().success('download');
+    return release.tar
+      .then((tar) => {
+        spinners().success('download');
 
-      return new Promise((resolve, reject) => {
-        tar
-          .pipe(output(outDir, catalog, release.name))
-          .on('finish', resolve)
-          .on('error', reject);
+        return new Promise((resolve, reject) => {
+          tar
+            .pipe(output(outDir, catalog, release.name))
+            .on('finish', resolve)
+            .on('error', reject);
+        });
       });
-    });
   });
 
   return Promise.all(extracted).then(() =>  catalog);
@@ -82,6 +88,8 @@ Promise.all([
       })
       .then(() => {
         spinners().success('watch');
+      }).catch((err) => {
+        console.log('what happened?', err);
       })
   }
 });

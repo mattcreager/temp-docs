@@ -15,6 +15,10 @@ class Spin {
     this.spinner[name].success(name);
   }
 
+  error(name) {
+    this.spinner[name].error(name)
+  }
+
 }
 
 let spinners = null;

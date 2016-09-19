@@ -25,7 +25,8 @@ export default {
   'watch': {
     alias: 'w',
     describe: 'Watch and rebuild local',
-    default: 'false',
+    default: false,
+    type: 'bool',
   },
   'help': {
     alias: 'h',

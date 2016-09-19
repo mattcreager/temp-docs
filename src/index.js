@@ -53,34 +53,35 @@ Promise.all([
 }).then((map) => {
   spinners().success('print');
 
-  let watcher = chokidar.watch(local, {
-    ignored: /[\/\\]\./,
-    persistent: true
-  });
+  if (watch) {
+    let watcher = chokidar.watch(local, {
+      ignored: /[\/\\]\./,
+      persistent: true
+    });
 
-  watcher
-    .on('change', updateLocal)
-    .on('unlink', path => log(`File ${path} has been removed`));
+    watcher
+      .on('change', updateLocal)
+      .on('unlink', path => log(`File ${path} has been removed`));
+  }
 
-    function updateLocal(path) {
-      rm(`${outDir}/local`)
-        .then(() => {
-          spinners().create('watch', `File ${path} has been changed, re-building local`);
-          return getLocal(local).tar;
+  function updateLocal(path) {
+    rm(`${outDir}/local`)
+      .then(() => {
+        spinners().create('watch', `File ${path} has been changed, re-building local`);
+        return getLocal(local).tar;
+      })
+      .then((tar) => {
+        return new Promise((resolve, reject) => {
+          tar
+            .pipe(output(`${outDir}/local`, catalog, 'local '))
+            .on('finish', resolve)
+            .on('error', reject);
+        }).then(() => {
+          return catalog.print(outDir);
         })
-        .then((tar) => {
-          return new Promise((resolve, reject) => {
-            tar
-              .pipe(output(`${outDir}/local`, catalog, 'local '))
-              .on('finish', resolve)
-              .on('error', reject);
-          }).then(() => {
-            console.log(catalog)
-            return catalog.print(outDir);
-          })
-        })
-        .then(() => {
-          spinners().success('watch');
-        })
-    }
+      })
+      .then(() => {
+        spinners().success('watch');
+      })
+  }
 });

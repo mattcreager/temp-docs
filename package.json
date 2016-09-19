@@ -1,7 +1,7 @@
 {
-  "name": "doc-catcher",
+  "name": "faxx",
   "version": "0.1.0",
-  "description": "Gotta Catch 'Em All",
+  "description": "📠  for docs",
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,10 +10,7 @@
     "prepare": "npm run compile"
   },
   "babel": {
-    "presets": [
-      "es2015",
-      "stage-0"
-    ]
+    "presets": [ "es2015", "stage-0" ]
   },
   "author": "",
   "license": "ISC",

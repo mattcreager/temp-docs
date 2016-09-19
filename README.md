@@ -2,7 +2,7 @@
 
 It's fun keeping docs and the code to which it refers together, but docs need to get out and about to be useful! Faxx teleports docs from a GitHub repository to wherever you heart desires.
 
-###  📠   = repo/📃  ✨  wherever/📃
+####  📠   = repo/📃  ✨  wherever/📃
 
 ## Development
 

@@ -1,3 +1,4 @@
+'use strict';
 
 import Promise from 'bluebird';
 import argv from 'yargs';
